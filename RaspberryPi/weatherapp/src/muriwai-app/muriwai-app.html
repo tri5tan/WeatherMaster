@@ -1,0 +1,118 @@
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../bower_components/iron-ajax/iron-ajax.html">
+<link rel="import" href="../../bower_components/iron-list/iron-list.html">
+<link rel="import" href="../../bower_components/paper-card/paper-card.html">
+
+<dom-module id="muriwai-app">
+    <template>
+    <style>
+      :host {
+        display: block;        
+        
+      }
+        .card {
+        @apply--layout-flex;
+        display: inline-block;
+        min-width: 200px;
+        height: 158px;
+        margin: 5px;	
+        padding: 16px;
+        padding-left: 40px;
+        padding-top: 5px;
+        color: #938789;
+        border-radius: 5px;
+        background-color: #171717;
+        box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+        font-size: 23px;
+      }
+        .Xlarge {
+            font-size: 76px;
+        }
+	.large {
+            font-size: 56px;
+        }
+	.medium {
+            font-size: 25px;
+        }
+        .tiny {
+            font-size: 18px;
+        }
+        .heading {
+            font-size: 28px;
+             padding: 16px;
+        }
+	.gap{
+            padding: 16px;
+        }
+        
+    </style>
+        
+        
+        
+    <div class="heading">Muriwai Weather Pi</div>
+      
+      <iron-ajax auto="" url="../../data/weather.json" handle-as="json" last-response="{{weather}}">
+      </iron-ajax>
+      
+      <template is="dom-repeat" items="{{weather}}">         
+        <div class="card" id="Outside">
+            <div>Outside</div>
+            <div class="Xlarge"><span>{{weather.tempC}}</span>°</div>
+            <div><span class="tiny">humidity: </span><span>{{weather.humidity}}</span> %</div>
+        </div>
+          
+        <div class="card" id="Outside">
+            <div>Inside</div>
+            <div class="Xlarge"><span>{{weather.insideTemp}}</span>°</div>
+            <div><span class="tiny">humidity: </span><span>{{weather.insideHumi}}</span> %</div>
+        </div>  
+	
+	<div class="card" id="wind">
+            <div>Wind</div>
+            <div class="large"><span>{{weather.windString}}</span>
+            </div>
+            <div class="tiny">Speed: <span class="medium">{{weather.windspdkph_avg2m}}</span><span class="tiny"> km/h</span>
+            </div>
+            <div class="tiny">Gust: <span class="medium">{{weather.windgustkph_10m}}</span><span class="tiny"> km/h</span>
+            </div>            
+        </div> 
+          
+        <div class="card" id="other">
+            <div></div>                        
+            <div class="tiny">Daily Rain: <span class="medium">{{weather.daily_rainmm}}</span> <span class="tiny">mm</span>
+            </div>
+	    <div class="tiny">Five Day Rain: <span class="medium">{{weather.fivedays_rainmm}}</span> <span class="tiny">mm</span>
+            </div>
+	    <div class="tiny">Pressure: <span class="medium">{{weather.pressure}}</span> <span class="tiny">hPa</span>
+            </div>
+	    <span class="gap"></span>	
+	    <div class="tiny">Time Received: <span>{{weather.Saved}}</span></div>
+	    <span class="gap"></span>
+	    <div class="tiny">Battery Voltage: <span>{{weather.batteryVoltage}}</span></div>		
+        </div>          
+        
+          
+            
+      </template>
+
+
+    </template>
+
+    <script>
+        /**
+         * @customElement
+         * @polymer
+         */
+        class MuriwaiApp extends Polymer.Element {
+            static get is() {
+                return 'muriwai-app';
+            }
+            static get properties() {
+                return {};
+            }
+        }
+
+        window.customElements.define(MuriwaiApp.is, MuriwaiApp);
+
+    </script>
+</dom-module>
