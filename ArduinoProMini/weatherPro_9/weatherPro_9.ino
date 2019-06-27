@@ -35,7 +35,7 @@
 const int sketchVersion = 9;
 boolean printStream = true; // Set to true to print transmited weather data to the serial
 
-#include <SoftwareSerial.h>
+#include <SoftwareSerial.h> // For sending data to Huzzah ESP8266
 #include <DHT.h>   //Humidity/Temp sensor
 #include <SPI.h>
 #include <Adafruit_Sensor.h>
@@ -157,11 +157,8 @@ void wspeedIRQ()
 }
 
 
-// I2C Digital Potentiometer
-// by Nicholas Zambetti <http://www.zambetti.com>
-// Using pin 2 (software sda) and 3 (software scl) in this example.
-//SoftwareWire myWire(4, 5); //
-SoftwareSerial mySerial(6, 7); // (RX, TX); on esp8266(TX, RX); (4, 5); (green wire, yellow wire)
+
+SoftwareSerial mySerial(6, 7); // on esp8266(4, 5); (green wire, yellow wire)
 
 int serial_inc = 0; // Increment through the variables to send via mySerial
 char received = 'R';
