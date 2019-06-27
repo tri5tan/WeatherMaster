@@ -11,7 +11,7 @@ class GraphDisplay {
   /* float[] rainPoints = {
    15, 16, 29, 34, 33, 24, 25, 16, 29, 34, 33, 54, 25, 16, 29, 34, 33, 24, 25, 16, 29, 34, 33, 24};
    */
-  //float[] rainPoints = { 25, 34, 23, 12, 34, 33, 24};
+  //float[] rainPoints = { 25, 34, 23, 12, 34, 33, 24}; // For testing
   //int mins;
   float rain_current; 
   float[] dailyrain;
@@ -37,10 +37,7 @@ class GraphDisplay {
      print("time24: "); 
      println(time24); */
 
-    /*lineChart.setData(new float[] {1900, 1910, 1920, 1930, 1940, 1950, 
-     1960, 1970, 1980, 1990, 2000}, 
-     new float[] { 6322, 6489, 6401, 7657, 9649, 9767, 
-     12167, 15154, 18200, 23124, 28645}); */
+  
 
 
 
@@ -52,8 +49,7 @@ class GraphDisplay {
     //lineChart.setMaxX(12);
 
 
-    //lineChart.setYFormat("$###,###");  // Monetary value in $US
-    //lineChart.setXFormat("0000");      // Year
+
     lineChart.setYFormat("###mm");  // in mm
     lineChart.setXFormat("##:'00'");      // Hours
     lineChart.setAxisValuesColour(primaryDarkColour);
